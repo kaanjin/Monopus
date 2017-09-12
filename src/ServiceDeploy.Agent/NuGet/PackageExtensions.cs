@@ -10,7 +10,7 @@ namespace ServiceDeploy.Agent.NuGet
     {
         public static async Task<string> GetDeployScript(this IPackage package)
         {
-            var deployFile = package.GetToolFiles().SingleOrDefault(f => f.EffectivePath == "deploy.ps1");
+            var deployFile = package.GetToolFiles().SingleOrDefault(f => f.EffectivePath.StartsWith("deploy"));
 
             if (deployFile != null)
             {
